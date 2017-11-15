@@ -1,0 +1,6 @@
+node_modules/**/*
+.expo/*
+npm-debug.*
+.vscode/
+constants/api_key.js
+apiKey.js

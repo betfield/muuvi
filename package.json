@@ -1,0 +1,32 @@
+{
+  "name": "movie-tinder",
+  "version": "0.0.0",
+  "description": "Hello Exponent!",
+  "author": "Emanuel Quimper",
+  "private": true,
+  "main": "main.js",
+  "dependencies": {
+    "@expo/ex-navigation": "*",
+    "@expo/vector-icons": "*",
+    "apollo-client": "^1.9.0",
+    "expo": "*",
+    "graphql": "^0.10.1",
+    "graphql-tag": "^2.5.0",
+    "moment": "^2.19.1",
+    "react": "16.0.0-alpha.12",
+    "react-apollo": "^1.1.2",
+    "react-native": "*",
+    "react-native-extended-stylesheet": "*",
+    "react-native-router-flux": "*",
+    "react-native-swipe-cards": "*",
+    "react-redux": "*",
+    "redux": "*",
+    "redux-persist": "*",
+    "redux-promise-middleware": "*",
+    "redux-thunk": "*"
+  },
+  "devDependencies": {
+    "eslint-config-rallycoding": "*",
+    "redux-logger": "*"
+  }
+}
