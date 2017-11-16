@@ -1,4 +1,4 @@
-import { fetchMoviePopular, fetchFixturesList } from '../../../helpers';
+import { fetchFixturesList } from '../../../api';
 
 export const GET_MOVIES_POPULAR = 'GET_MOVIES_POPULAR';
 

@@ -5,9 +5,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import { MaterialIcons } from '@expo/vector-icons';
 import {
   HomeScreen,
-  IframeTrailerScreen,
   LikedMoviesScreen,
-  MoviesSimilarScreen
 } from './modules';
 
 const Routes = () => (
@@ -35,23 +33,13 @@ const Routes = () => (
     <Scene
       key="home"
       initial
-      title="Liked some movies"
+      title="Your predictions"
       component={HomeScreen}
     />
     <Scene
-      key="trailer"
-      title="Trailer"
-      component={IframeTrailerScreen}
-    />
-    <Scene
       key="likedMovies"
-      title="Your liked movies"
+      title="Your predictions"
       component={LikedMoviesScreen}
-    />
-    <Scene
-      key="moviesSimilar"
-      title="Similar Movies"
-      component={MoviesSimilarScreen}
     />
   </Router>
 );

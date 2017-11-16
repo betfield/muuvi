@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { Entypo, FontAwesome } from '@expo/vector-icons';
 import Colors from '../../../../constants/Colors';
 import styles from './styles/ButtonsGroup';
 
@@ -8,7 +8,7 @@ const ButtonsGroup = ({ like, dislike, info }) => (
   <View style={styles.root}>
     <TouchableOpacity onPress={dislike}>
       <View style={[styles.buttons, { borderColor: Colors.redColor }]}>
-        <Ionicons name="ios-thumbs-down" size={50} color={Colors.redColor} />
+        <Entypo name="arrow-left" size={50} color={Colors.redColor} />
       </View>
     </TouchableOpacity>
     <TouchableOpacity onPress={info}>
@@ -18,7 +18,7 @@ const ButtonsGroup = ({ like, dislike, info }) => (
     </TouchableOpacity>
     <TouchableOpacity onPress={like}>
       <View style={[styles.buttons, { borderColor: Colors.blueColor }]}>
-        <Ionicons name="ios-thumbs-up" size={50} color={Colors.blueColor} />
+        <Entypo name="arrow-right" size={50} color={Colors.blueColor} />
       </View>
     </TouchableOpacity>
   </View>

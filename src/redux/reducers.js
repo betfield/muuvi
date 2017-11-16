@@ -4,13 +4,11 @@ import {
   InfoReducer,
   UIReducer,
   LikedMovieReducer,
-  MoviesSimilarReducer
 } from '../modules';
 
 export default combineReducers({
   home: HomeReducer,
   infoModal: InfoReducer,
   likedMovie: LikedMovieReducer,
-  moviesSimilar: MoviesSimilarReducer,
   ui: UIReducer
 });

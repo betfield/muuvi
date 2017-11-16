@@ -18,7 +18,6 @@
     "react-native": "*",
     "react-native-extended-stylesheet": "*",
     "react-native-router-flux": "*",
-    "react-native-swipe-cards": "*",
     "react-redux": "*",
     "redux": "*",
     "redux-persist": "*",

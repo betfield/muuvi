@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
-import SwipeCards from 'react-native-swipe-cards';
+import SwipeCards from './components/SwipeCards';
 import { ButtonsGroup, Card, NoMoreCard } from './components';
 import { InfoModal } from '../infoModal';
 import styles from './styles/SwiperEL';
@@ -12,12 +12,12 @@ import { getHeaderDate } from '../../../helpers';
 class SwiperEL extends Component {
   state = { cardIndex: 0 }
 
-  _handleYup = movie => {
+  _handleYup = fixture => {
     this.setState({ cardIndex: this.state.cardIndex + 1 });
     this.props.addMovieToLikedList({
-      id: movie.id,
-      title: movie.title,
-      image: movie.poster_path
+      id: fixture.id,
+      title: fixture.homeTeam.name,
+      image: fixture.homeTeam.logoUrl
     });
   }
 
@@ -26,11 +26,11 @@ class SwiperEL extends Component {
   _clickLike= () => {
     this.setState({ cardIndex: this.state.cardIndex + 1 });
     this._swiper._goToNextCard();
-    const movie = this.props.movies[this.state.cardIndex];
+    const fixture = this.props.fixtures[this.state.cardIndex];
     this.props.addMovieToLikedList({
-      id: movie.id,
-      title: movie.title,
-      image: movie.poster_path
+      id: fixture.id,
+      title: fixture.homeTeam.name,
+      image: fixture.homeTeam.logoUrl
     });
   }
 

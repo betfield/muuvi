@@ -14,7 +14,7 @@ class LikedMoviesScreen extends Component {
         <View style={styles.root}>
           <View style={styles.container}>
             <Text style={styles.getMovieText}>
-              No movie liked yet!
+              No predictions yet!
             </Text>
           </View>
         </View>
@@ -23,16 +23,16 @@ class LikedMoviesScreen extends Component {
     return (
       <View style={styles.root}>
         <ScrollView horizontal style={{ flex: 1 }}>
-          {this.props.data.map((movie, i) => (
+          {this.props.data.map((fixture, i) => (
             <View style={styles.movieContainer} key={i}>
               <View style={styles.movieImageContainer}>
                 <Image
                   style={styles.movieImage}
-                  source={{ uri: `/${movie.image}` }}
+                  source={{ uri: fixture.image }}
                 />
               </View>
               <TouchableWithoutFeedback
-                onPress={() => this.props.removeMovieFromList(movie.id)}
+                onPress={() => this.props.removeMovieFromList(fixture.id)}
               >
                 <View style={styles.deleteButton}>
                   <Text style={styles.deleteText}>Remove</Text>
@@ -42,22 +42,6 @@ class LikedMoviesScreen extends Component {
             </View>
           ))}
         </ScrollView>
-        <View style={styles.getMeMovieContainer}>
-          <TouchableWithoutFeedback
-            onPress={() => Actions.moviesSimilar()}
-          >
-            <View style={styles.getMovieButton}>
-              <Text style={styles.getMovieText}>
-                Give me some movies
-              </Text>
-              <MaterialIcons
-                name="local-movies"
-                size={30}
-                color={Colors.blueColor}
-              />
-            </View>
-          </TouchableWithoutFeedback>
-        </View>
       </View>
     );
   }
