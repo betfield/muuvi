@@ -340,11 +340,11 @@ export default class SwipeCards extends Component {
 
       let style = {
         position: 'absolute',
-        top: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOffsetY, offsetY] }),
+        /*top: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOffsetY, offsetY] }),
         left: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOffsetX, offsetX] }),
         opacity: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOpacity, opacity] }),
         transform: [{ scale: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastScale, scale] }) }],
-        elevation: i * 10
+        elevation: i * 10*/
       };
 
       //Is this the top card?  If so animate it and hook up the pan handlers.
@@ -367,7 +367,7 @@ export default class SwipeCards extends Component {
           //position: 'absolute',
           //top: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOffsetY, offsetY] }),
           //left: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOffsetX, offsetX] }),
-          opacity: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOpacity, opacity] }),
+          /*opacity: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastOpacity, opacity] }),
           transform: [{ scale: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastScale, scale] }) }],
           elevation: i * 10,
           transform: [
@@ -376,7 +376,7 @@ export default class SwipeCards extends Component {
             { rotate: rotate },
             { scale: scale}
             //{ scale: this.state.enter.interpolate({ inputRange: [0, 1], outputRange: [lastScale, scale] }) }
-          ]
+          ]*/
         };
         
         //console.log("Card: " + JSON.stringify(this.state.card, null, 4) + ", id: " + i);

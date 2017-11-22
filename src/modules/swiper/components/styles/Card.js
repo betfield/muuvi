@@ -15,10 +15,9 @@ const styles = EStyleSheet.create({
     },
     shadowColor: 'black',
     shadowOpacity: 0.8,
-    //backgroundColor: '#494953',
-    backgroundColor: '$redColor',
-    borderWidth: 1,
-    borderColor: '$redColor',    
+    //backgroundColor: '$redColor',
+    //borderWidth: 1,
+    //borderColor: '$redColor',    
   },
   poster: {
     flex: 0.45,

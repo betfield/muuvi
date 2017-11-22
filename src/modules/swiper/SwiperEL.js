@@ -42,7 +42,7 @@ class SwiperEL extends Component {
   render() {
     const { fixtures, modalInfoShow, openModalInfo, closeModalInfo, modalInfoMovie } = this.props;
 
-    if (this.state.cardIndex > fixtures.length - 1) {
+    if (fixtures === null || this.state.cardIndex > fixtures.length - 1) {
       return <NoMoreCard />;
     }
 
@@ -69,6 +69,9 @@ class SwiperEL extends Component {
           //stackOffsetY={20}
           renderNoMoreCards={() => <NoMoreCard />}
         />
+        <View style={styles.titleContainer}>
+          <Text style={styles.titleStyle}>{fixtures[this.state.cardIndex].venue.name}</Text>
+        </View>
         <ButtonsGroup
           info={() => openModalInfo(fixtures[this.state.cardIndex])}
           dislike={this._clickDislike}
