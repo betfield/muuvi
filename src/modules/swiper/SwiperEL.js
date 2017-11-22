@@ -16,14 +16,32 @@ class SwiperEL extends Component {
     this.setState({ cardIndex: this.state.cardIndex + 1 });
     this.props.addMovieToLikedList({
       id: fixture.id,
+      title: fixture.awayTeam.name,
+      image: fixture.awayTeam.logoUrl
+    });
+  }
+
+  _handleNope = fixture => {
+    this.setState({ cardIndex: this.state.cardIndex + 1 })
+    this.props.addMovieToLikedList({
+      id: fixture.id,
       title: fixture.homeTeam.name,
       image: fixture.homeTeam.logoUrl
     });
   }
 
-  _handleNope = () => this.setState({ cardIndex: this.state.cardIndex + 1 })
-
   _clickLike= () => {
+    this.setState({ cardIndex: this.state.cardIndex + 1 });
+    this._swiper._goToNextCard();
+    const fixture = this.props.fixtures[this.state.cardIndex];
+    this.props.addMovieToLikedList({
+      id: fixture.id,
+      title: fixture.awayTeam.name,
+      image: fixture.awayTeam.logoUrl
+    });
+  }
+
+  _clickDislike = () => {
     this.setState({ cardIndex: this.state.cardIndex + 1 });
     this._swiper._goToNextCard();
     const fixture = this.props.fixtures[this.state.cardIndex];
@@ -32,11 +50,6 @@ class SwiperEL extends Component {
       title: fixture.homeTeam.name,
       image: fixture.homeTeam.logoUrl
     });
-  }
-
-  _clickDislike = () => {
-    this.setState({ cardIndex: this.state.cardIndex + 1 });
-    this._swiper._goToNextCard();
   }
 
   render() {
