@@ -2,7 +2,16 @@ import { OPEN_MODAL_INFO, CLOSE_MODAL_INFO } from './actions';
 
 const INITIAL_STATE = {
   modalInfoShow: false,
-  modalInfoMovie: {}
+  modalInfoMovie: {
+    homeTeam: {
+      name: "",
+      logoUrl: ""
+    },
+    awayTeam: {
+      name: "",
+      logoUrl: ""
+    }
+  }
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -10,7 +19,7 @@ export default (state = INITIAL_STATE, action) => {
     case OPEN_MODAL_INFO:
       return {
         modalInfoShow: true, //was !state.modalInfoShow
-        modalInfoMovie: action.movie
+        modalInfoMovie: action.fixture
       };
     case CLOSE_MODAL_INFO:
       return INITIAL_STATE;

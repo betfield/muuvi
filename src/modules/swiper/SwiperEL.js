@@ -12,7 +12,7 @@ import { getHeaderDate } from '../../../helpers';
 class SwiperEL extends Component {
   state = { cardIndex: 0 }
 
-  _handleYup = fixture => {
+  _handleAwayWin = fixture => {
     this.setState({ cardIndex: this.state.cardIndex + 1 });
     this.props.addMovieToLikedList({
       id: fixture.id,
@@ -21,7 +21,7 @@ class SwiperEL extends Component {
     });
   }
 
-  _handleNope = fixture => {
+  _handleHomeWin = fixture => {
     this.setState({ cardIndex: this.state.cardIndex + 1 })
     this.props.addMovieToLikedList({
       id: fixture.id,
@@ -30,7 +30,7 @@ class SwiperEL extends Component {
     });
   }
 
-  _clickLike= () => {
+  _clickAwayWin= () => {
     this.setState({ cardIndex: this.state.cardIndex + 1 });
     this._swiper._goToNextCard();
     const fixture = this.props.fixtures[this.state.cardIndex];
@@ -41,7 +41,7 @@ class SwiperEL extends Component {
     });
   }
 
-  _clickDislike = () => {
+  _clickHomeWin = () => {
     this.setState({ cardIndex: this.state.cardIndex + 1 });
     this._swiper._goToNextCard();
     const fixture = this.props.fixtures[this.state.cardIndex];
@@ -70,8 +70,8 @@ class SwiperEL extends Component {
           containerStyle={styles.swiperContainer}
           cards={fixtures}
           renderCard={data => <Card {...data} />}
-          handleYup={this._handleYup}
-          handleNope={this._handleNope}
+          handleYup={this._handleAwayWin}
+          handleNope={this._handleHomeWin}
           yupText={"Away team win!"}
           yupStyle={styles.yupAndNopeStyle}
           yupTextStyle={styles.yupTextStyle}
@@ -87,14 +87,14 @@ class SwiperEL extends Component {
         </View>
         <ButtonsGroup
           info={() => openModalInfo(fixtures[this.state.cardIndex])}
-          dislike={this._clickDislike}
-          like={this._clickLike}
+          dislike={this._clickHomeWin}
+          like={this._clickAwayWin}
         />
         <InfoModal
           closeModalInfo={closeModalInfo}
           close={() => closeModalInfo()}
           visible={modalInfoShow}
-          movie={modalInfoMovie}
+          fixture={modalInfoMovie}
         />
       </View>
     );

@@ -5,41 +5,36 @@ import { FontAwesome } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import styles from './styles/MovieMeta';
 import Panel from './Panel';
-import { getMovieTrailer } from '../actions';
+import { getFixtureDetails } from '../actions';
 
 class MovieMeta extends Component {
   componentDidMount() {
-    this.props.getMovieTrailer(this.props.movie.id);
-  }
-
-  _goToTrailer = () => {
-    this.props.closeModalInfo();
-    Actions.trailer({ trailerId: this.props.data.videos[0].key });
+    this.props.getFixtureDetails(this.props.fixture);
   }
 
   render() {
-    const { movie } = this.props;
+    const { fixture } = this.props;
+    const { odds, form, head2head } = this.props.data;
+    console.log("Ooooods: " + JSON.stringify(odds, null, 4));
+
     return (
       <View style={styles.bottomContainer}>
-        <Panel title="Rating">
+        <Panel title="Odds">
           <Text style={styles.panelText}>
-            {movie.vote_average} <FontAwesome name="star" color="#fff" /> / {''}
-            {movie.vote_count} <FontAwesome name="users" color="#fff" />
+            {odds}
           </Text>
         </Panel>
-        <Panel title="Release Date">
+        <Panel title="Form">
           <Text style={styles.panelText}>
-            <FontAwesome name="calendar" color="#fff" /> {movie.release_date}
+            {form}
           </Text>
         </Panel>
-        <Panel title="Trailer">
-          <TouchableOpacity onPress={this._goToTrailer}>
-            <View style={styles.buttonTrailer}>
-              <Text style={styles.buttonText}>
-                Watch here
-              </Text>
-            </View>
-          </TouchableOpacity>
+        <Panel title="Head To Head">
+          <View style={styles.buttonTrailer}>
+            <Text style={styles.buttonText}>
+              {head2head}
+            </Text>
+          </View>
         </Panel>
       </View>
     );
@@ -50,5 +45,5 @@ export default connect(
   state => ({
     data: state.infoModal
   }),
-  { getMovieTrailer }
+  { getFixtureDetails }
 )(MovieMeta);

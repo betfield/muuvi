@@ -22,13 +22,13 @@ class LikedMoviesScreen extends Component {
     }
     return (
       <View style={styles.root}>
-        <ScrollView horizontal style={{ flex: 1 }}>
+        <ScrollView horizontal style={{ flex: 0.5 }}>
           {this.props.data.map((fixture, i) => (
             <View style={styles.movieContainer} key={i}>
               <View style={styles.movieImageContainer}>
                 <Image
                   style={styles.movieImage}
-                  source={{ uri: fixture.image }}
+                  source={{ uri: fixture.homeTeam.logoUrl }}
                 />
               </View>
               <TouchableWithoutFeedback

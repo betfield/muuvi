@@ -3,12 +3,12 @@ import { View, Text, TouchableWithoutFeedback } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { getMoviesPopular } from '../../home/actions';
+import { getCurrentMatchdayFixtures } from '../../home/actions';
 
 const NoMoreCard = ({ getMoviesPopular }) => (
   <View style={styles.root}>
     <Text style={styles.textStyle}>No more fixtures!!!</Text>
-    <TouchableWithoutFeedback onPress={() => getMoviesPopular()}>
+    <TouchableWithoutFeedback onPress={() => getCurrentMatchdayFixtures()}>
       <View style={styles.button}>
         <Text style={styles.buttonText}>Try again</Text>
       </View>
@@ -45,5 +45,5 @@ const styles = EStyleSheet.create({
 
 export default connect(
   null,
-  { getMoviesPopular }
+  { getCurrentMatchdayFixtures }
 )(NoMoreCard);

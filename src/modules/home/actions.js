@@ -1,12 +1,12 @@
 import { fetchFixturesList } from '../../../api';
 
-export const GET_MOVIES_POPULAR = 'GET_MOVIES_POPULAR';
+export const GET_CURRENT_MATCHDAY_FIXTURES = 'GET_CURRENT_MATCHDAY_FIXTURES';
 
-export const getMoviesPopular = () => {
+export const getCurrentMatchdayFixtures = () => {
   data = fetchFixturesList();
 
   return {
-    type: GET_MOVIES_POPULAR,
+    type: GET_CURRENT_MATCHDAY_FIXTURES,
     payload: data
   };
 }

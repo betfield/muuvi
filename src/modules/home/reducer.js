@@ -1,4 +1,4 @@
-import { GET_MOVIES_POPULAR } from './actions';
+import { GET_CURRENT_MATCHDAY_FIXTURES } from './actions';
 
 const INITIAL_STATE = {
   isFetched: false,
@@ -8,14 +8,14 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case `${GET_MOVIES_POPULAR}_PENDING`:
+    case `${GET_CURRENT_MATCHDAY_FIXTURES}_PENDING`:
       return INITIAL_STATE;
-    case `${GET_MOVIES_POPULAR}_FULFILLED`:
+    case `${GET_CURRENT_MATCHDAY_FIXTURES}_FULFILLED`:
       return { ...state,
         isFetched: true,
         fixtures: action.payload.currentMatchdayfixtures
       };
-    case `${GET_MOVIES_POPULAR}_REJECTED`:
+    case `${GET_CURRENT_MATCHDAY_FIXTURES}_REJECTED`:
       return { ...state,
         isFetched: true,
         error: action.payload

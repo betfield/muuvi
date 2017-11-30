@@ -7,7 +7,7 @@ import styles from './styles/InfoModal';
 
 const colors = ['rgba(0, 0, 0, 1)', 'rgba(0, 0, 0, 0.7)', 'rgba(0,0,0,0.4)'];
 
-const InfoModal = ({ movie, close, closeModalInfo, visible }) => (
+const InfoModal = ({ fixture, close, closeModalInfo, visible }) => (
   <Modal visible={visible} transparent animationType="slide" onRequestClose={Platform.OS === 'android' ? close : null}>
     <View style={styles.root}>
       <View style={styles.container}>
@@ -15,22 +15,23 @@ const InfoModal = ({ movie, close, closeModalInfo, visible }) => (
           <TouchableOpacity onPress={close} style={styles.closeButton}>
             <FontAwesome name="close" color="#fff" size={50} />
           </TouchableOpacity>
+          <Text style={styles.titleStyle}>{fixture.homeTeam.name}</Text>
           <Image
-            source={{ uri: `${movie.poster_path}` }}
+            source={{ uri: fixture.homeTeam.logoUrl }}
             style={styles.poster}
           />
           <LinearGradient colors={colors} style={styles.imagesMeta}>  
             <View style={styles.titleContainer}>
-              <Text style={styles.titleStyle}>{movie.title}</Text>
+              <Text style={styles.titleStyle}>{fixture.awayTeam.name}</Text>
             </View>
             <ScrollView contentContainerStyle={styles.overviewContainerScroll}>
               <View style={styles.overviewContainer}>
-                <Text style={styles.overviewStyle}>{movie.overview}</Text>
+                <Text style={styles.overviewStyle}>{fixture.awayTeam.name}</Text>
               </View>
             </ScrollView>
           </LinearGradient>  
         </View>
-        <MovieMeta movie={movie} closeModalInfo={closeModalInfo} />
+        <MovieMeta fixture={fixture} closeModalInfo={closeModalInfo} />
       </View>
     </View>
   </Modal>

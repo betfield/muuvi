@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
-import { getMoviesPopular } from './actions';
+import { getCurrentMatchdayFixtures } from './actions';
 import { LoadingScreen } from '../../commons';
 import { SwiperEL } from '../swiper';
 
 class HomeScreen extends Component {
   componentDidMount() {
-    this.props.getMoviesPopular();
+    this.props.getCurrentMatchdayFixtures();
   }
   render() {
     const { data, navigator } = this.props;
@@ -25,12 +25,15 @@ class HomeScreen extends Component {
   }
 }
 
-//
+//Connect component to the Redux store ("state" object provided to the ApolloProvider)
 export default connect(
-  //function to map State to props 
+  //Map only the "home" reducer (./reducer.js) as state 
+  // ---- (rather than the complete Redux store as state) ----
+  //to HomeScreen component props
   state => ({
     data: state.home
   }),
-  //function to map Dispatch to props 
-  { getMoviesPopular }
+  //Map getCurrentMatchdayFixtures dispatch function (action creator)
+  //to HomeScreen component props
+  { getCurrentMatchdayFixtures }
 )(HomeScreen);

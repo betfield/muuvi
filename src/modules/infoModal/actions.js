@@ -1,12 +1,21 @@
-import { fetchMovieTrailers } from '../../../helpers';
+import { fetchFixtureOdds, fetchHead2Head, fetchTeamForm } from '../../../api';
 
-export const GET_MOVIE_TRAILER = 'GET_MOVIE_TRAILER';
+export const GET_FIXTURE_DETAILS = 'GET_FIXTURE_DETAILS';
 
-export const getMovieTrailer = id => {
-  const data = fetchMovieTrailers(id);
+export const getFixtureDetails = fixture => {
+  const odds = fetchFixtureOdds(fixture.id, 2);
+  const head2head = fetchHead2Head(fixture.homeTeam.id, fixture.awayTeam.id);
+  const form = {
+    "home": fetchTeamForm(fixture.homeTeam.id),
+    "away": fetchTeamForm(fixture.awayTeam.id)
+  }
 
   return {
-    type: GET_MOVIE_TRAILER,
-    payload: data
+    type: GET_FIXTURE_DETAILS,
+    payload: {
+      odds: odds,
+      head2head: head2head,
+      form: form,
+    }
   };
 };

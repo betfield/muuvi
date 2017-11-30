@@ -12,6 +12,7 @@
     "expo": "*",
     "graphql": "^0.10.1",
     "graphql-tag": "^2.5.0",
+    "https": "^1.0.0",
     "moment": "^2.19.1",
     "react": "16.0.0-alpha.12",
     "react-apollo": "^1.1.2",
