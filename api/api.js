@@ -7,8 +7,9 @@ const Sportmonks = new SportmonksApi(
   "fVOC8UhcpFDSVFyNmAIjbbt2buc86l128ovGMVAJZwgHVtnwpa9XjZJ3GodE"
 );
 
-export const fetchFixturesList = async () => {
-  return await client.query({query: fixturesListQuery})
+//Removed async/await for testing purposes - not sure these are needed here
+export const fetchFixturesList = () => {
+  return client.query({query: fixturesListQuery})
     .then((res) => {
       //console.log("Query result: " + JSON.stringify(res, null, 4));
       return res.data;
@@ -19,13 +20,13 @@ export const fetchFixturesList = async () => {
 }
 
 //https://soccer.sportmonks.com/api/v2.0/odds/fixture/1625141/bookmaker/2?api_token=fVOC8UhcpFDSVFyNmAIjbbt2buc86l128ovGMVAJZwgHVtnwpa9XjZJ3GodE
-export const fetchFixtureOdds = async (fixtureId, bookmakerId) => {
+export const fetchFixtureOdds = (fixtureId, bookmakerId) => {
   return Sportmonks.get(
     "v2.0/odds/fixture/{id}/bookmaker/{bookmaker}", {
       "id": fixtureId, 
       "bookmaker": bookmakerId
     })
-    .then(res => {
+    .then(async res => {
       return res.json();
     })
     .then(res => {
@@ -39,7 +40,7 @@ export const fetchFixtureOdds = async (fixtureId, bookmakerId) => {
 
 //https://soccer.sportmonks.com/api/v2.0/head2head/85/2650?api_token=fVOC8UhcpFDSVFyNmAIjbbt2buc86l128ovGMVAJZwgHVtnwpa9XjZJ3GodE
 export const fetchHead2Head = async (homeTeam, awayTeam) => {
-  return Sportmonks.get(
+  return await Sportmonks.get(
     "v2.0/head2head/{homeTeam}/{awayTeam}", {
       "homeTeam": homeTeam, 
       "awayTeam": awayTeam
@@ -58,7 +59,7 @@ export const fetchHead2Head = async (homeTeam, awayTeam) => {
 
 //https://soccer.sportmonks.com/api/v2.0/teams/85?api_token=fVOC8UhcpFDSVFyNmAIjbbt2buc86l128ovGMVAJZwgHVtnwpa9XjZJ3GodE&include=latest:limit(5|1)
 export const fetchTeamForm = async (id) => {
-  return Sportmonks.get(
+  return await Sportmonks.get(
     "v2.0/teams/{id}", {
       "id": id, 
       "latest": true

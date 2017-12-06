@@ -15,9 +15,9 @@ export default (state = INITIAL_STATE, action) => {
     case `${GET_FIXTURE_DETAILS}_FULFILLED`:
       return { ...state,
         isFetched: true,
-        odds: action.payload.odds,
-        head2head: action.payload.head2head,
-        form: action.payload.form,
+        odds: action.payload,
+        //head2head: action.payload.head2head,
+        //form: action.payload.form,
       };
     case `${GET_FIXTURE_DETAILS}_REJECTED`:
       return { ...state,
