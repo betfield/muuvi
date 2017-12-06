@@ -10,21 +10,23 @@ import { getFixtureDetails } from '../actions';
 class MovieMeta extends Component {
 
   componentDidMount() {
-    this.props.getFixtureDetails(this.props.fixture);
+    this.props.getFixtureDetails(this.props.fixture, 2);
   }
 
   render() {
     const { data, fixture } = this.props;
 
     if (!data.isFetched) {
-      console.log("fixtureDetailsNotLoaded: " + JSON.stringify(data.odds, null, 4));
       return (
-        <Panel title="Ohhooodds">
-          <Text>Loading...</Text>
-        </Panel>
+        <View style={styles.bottomContainer}>
+          <Panel title="Loading...">
+            <Text style={styles.panelText}>
+              Loading...
+            </Text>
+          </Panel>
+        </View>
       );
     } else if (!data.error) {
-      console.log("fixtureDetailsLoaded: " + JSON.stringify(data.odds, null, 4));
       return (
         <View style={styles.bottomContainer}>
           <Panel title="Odds">

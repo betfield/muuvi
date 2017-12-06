@@ -28,8 +28,9 @@ class LikedMoviesScreen extends Component {
               <View style={styles.movieImageContainer}>
                 <Image
                   style={styles.movieImage}
-                  source={{ uri: fixture.homeTeam.logoUrl }}
+                  source={{ uri: fixture.image }}
                 />
+                <Text>{fixture.name}</Text>
               </View>
               <TouchableWithoutFeedback
                 onPress={() => this.props.removeMovieFromList(fixture.id)}

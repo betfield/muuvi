@@ -1,9 +1,9 @@
-import { fetchFixtureOdds, fetchHead2Head, fetchTeamForm } from '../../../api';
+import { fetchFixtureOdds } from '../../../api';
 
 export const GET_FIXTURE_DETAILS = 'GET_FIXTURE_DETAILS';
 
-export const getFixtureDetails = fixture => {
-  odds = fetchFixtureOdds(fixture.id, 2);
+export const getFixtureDetails = (fixture, bookieId) => {
+  data = fetchFixtureOdds(fixture.id, bookieId);
   //head2head = fetchHead2Head(fixture.homeTeam.id, fixture.awayTeam.id);
   /*form = {
     "home": fetchTeamForm(fixture.homeTeam.id),
@@ -12,7 +12,7 @@ export const getFixtureDetails = fixture => {
 
   return {
     type: GET_FIXTURE_DETAILS,
-    payload: odds
+    payload: data
     /*payload: {
       odds: odds,
       head2head: head2head,

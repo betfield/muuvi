@@ -16,7 +16,7 @@ class SwiperEL extends Component {
     this.setState({ cardIndex: this.state.cardIndex + 1 });
     this.props.addMovieToLikedList({
       id: fixture.id,
-      title: fixture.awayTeam.name,
+      name: fixture.awayTeam.name,
       image: fixture.awayTeam.logoUrl
     });
   }
@@ -25,7 +25,7 @@ class SwiperEL extends Component {
     this.setState({ cardIndex: this.state.cardIndex + 1 })
     this.props.addMovieToLikedList({
       id: fixture.id,
-      title: fixture.homeTeam.name,
+      name: fixture.homeTeam.name,
       image: fixture.homeTeam.logoUrl
     });
   }
@@ -36,7 +36,7 @@ class SwiperEL extends Component {
     const fixture = this.props.fixtures[this.state.cardIndex];
     this.props.addMovieToLikedList({
       id: fixture.id,
-      title: fixture.awayTeam.name,
+      name: fixture.awayTeam.name,
       image: fixture.awayTeam.logoUrl
     });
   }
@@ -47,13 +47,13 @@ class SwiperEL extends Component {
     const fixture = this.props.fixtures[this.state.cardIndex];
     this.props.addMovieToLikedList({
       id: fixture.id,
-      title: fixture.homeTeam.name,
+      name: fixture.homeTeam.name,
       image: fixture.homeTeam.logoUrl
     });
   }
 
   render() {
-    const { fixtures, modalInfoShow, openModalInfo, closeModalInfo, modalInfoMovie } = this.props;
+    const { fixtures, modalInfoShow, openModalInfo, closeModalInfo, modalInfoFixture } = this.props;
 
     if (fixtures === null || this.state.cardIndex > fixtures.length - 1) {
       return <NoMoreCard />;
@@ -94,7 +94,7 @@ class SwiperEL extends Component {
           closeModalInfo={closeModalInfo}
           close={() => closeModalInfo()}
           visible={modalInfoShow}
-          fixture={modalInfoMovie}
+          fixture={modalInfoFixture}
         />
       </View>
     );
@@ -104,7 +104,7 @@ class SwiperEL extends Component {
 export default connect(
   state => ({
     modalInfoShow: state.ui.modalInfoShow,
-    modalInfoMovie: state.ui.modalInfoMovie
+    modalInfoFixture: state.ui.modalInfoFixture
   }),
   { openModalInfo, closeModalInfo, addMovieToLikedList }
 )(SwiperEL);
