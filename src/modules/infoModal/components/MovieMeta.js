@@ -36,15 +36,14 @@ class MovieMeta extends Component {
           </Panel>
           <Panel title="Form">
             <Text style={styles.panelText}>
-              {data.form}
+            {data.homeForm.name}
+            {data.awayForm.name}
             </Text>
           </Panel>
           <Panel title="Head To Head">
-            <View style={styles.buttonTrailer}>
-              <Text style={styles.buttonText}>
-                {data.head2head}
-              </Text>
-            </View>
+            <Text style={styles.panelText}>
+              {data.head2head[0].localteam_id}
+            </Text>
           </Panel>
         </View>
       );

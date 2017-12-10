@@ -10,7 +10,7 @@ const Sportmonks = new SportmonksApi(
 //Removed async/await for testing purposes - not sure these are needed here
 export const fetchFixturesList = () => {
   return client.query({query: fixturesListQuery})
-    .then((res) => {
+    .then(res => {
       //console.log("Query result: " + JSON.stringify(res, null, 4));
       return res.data;
     })
@@ -19,8 +19,25 @@ export const fetchFixturesList = () => {
     });
 }
 
+export const fetchFixtureDetails = (fixture, bookieId) => {
+  return Promise.all([fetchFixtureOdds(fixture.id, bookieId), fetchHead2Head(fixture.homeTeam.id, fixture.awayTeam.id), fetchTeamForm(fixture.homeTeam.id), fetchTeamForm(fixture.awayTeam.id)])
+    .then(res => {
+      console.log("Promise all result: " + JSON.stringify(res[0], null, 4));
+      return [
+        res[0], //Odds
+        res[1], //Head2Head
+        res[2], //Home Form
+        res[3] //Away Form
+      ];
+    })
+    .catch((error)=> {
+      console.log(error);
+    });
+}
+
+
 //https://soccer.sportmonks.com/api/v2.0/odds/fixture/1625141/bookmaker/2?api_token=fVOC8UhcpFDSVFyNmAIjbbt2buc86l128ovGMVAJZwgHVtnwpa9XjZJ3GodE
-export const fetchFixtureOdds = (fixtureId, bookmakerId) => {
+const fetchFixtureOdds = (fixtureId, bookmakerId) => {
   return Sportmonks.get(
     "v2.0/odds/fixture/{id}/bookmaker/{bookmaker}", {
       "id": fixtureId, 
@@ -39,7 +56,7 @@ export const fetchFixtureOdds = (fixtureId, bookmakerId) => {
 }
 
 //https://soccer.sportmonks.com/api/v2.0/head2head/85/2650?api_token=fVOC8UhcpFDSVFyNmAIjbbt2buc86l128ovGMVAJZwgHVtnwpa9XjZJ3GodE
-export const fetchHead2Head = async (homeTeam, awayTeam) => {
+const fetchHead2Head = async (homeTeam, awayTeam) => {
   return Sportmonks.get(
     "v2.0/head2head/{homeTeam}/{awayTeam}", {
       "homeTeam": homeTeam, 
@@ -58,7 +75,7 @@ export const fetchHead2Head = async (homeTeam, awayTeam) => {
 }
 
 //https://soccer.sportmonks.com/api/v2.0/teams/85?api_token=fVOC8UhcpFDSVFyNmAIjbbt2buc86l128ovGMVAJZwgHVtnwpa9XjZJ3GodE&include=latest:limit(5|1)
-export const fetchTeamForm = async (id) => {
+const fetchTeamForm = async (id) => {
   return Sportmonks.get(
     "v2.0/teams/{id}", {
       "id": id, 
