@@ -3,17 +3,17 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { View, Text, Image, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
-import styles from './styles/LikedMoviesScreen';
-import { removeMovieFromList } from '../swiper/actions';
+import styles from './styles/MyPredictionsScreen';
+import { removePrediction } from '../swiper/actions';
 import Colors from '../../../constants/Colors';
 
-class LikedMoviesScreen extends Component {
+class MyPredictionsScreen extends Component {
   render() {
     if (this.props.data.length < 1) {
       return (
         <View style={styles.root}>
           <View style={styles.container}>
-            <Text style={styles.getMovieText}>
+            <Text style={styles.getFixtureText}>
               No predictions yet!
             </Text>
           </View>
@@ -24,16 +24,16 @@ class LikedMoviesScreen extends Component {
       <View style={styles.root}>
         <ScrollView horizontal style={{ flex: 0.5 }}>
           {this.props.data.map((fixture, i) => (
-            <View style={styles.movieContainer} key={i}>
-              <View style={styles.movieImageContainer}>
+            <View style={styles.fixtureContainer} key={i}>
+              <View style={styles.fixtureImageContainer}>
                 <Image
-                  style={styles.movieImage}
+                  style={styles.fixtureImage}
                   source={{ uri: fixture.image }}
                 />
                 <Text>{fixture.name}</Text>
               </View>
               <TouchableWithoutFeedback
-                onPress={() => this.props.removeMovieFromList(fixture.id)}
+                onPress={() => this.props.removePrediction(fixture.id)}
               >
                 <View style={styles.deleteButton}>
                   <Text style={styles.deleteText}>Remove</Text>
@@ -50,10 +50,10 @@ class LikedMoviesScreen extends Component {
 
 export default connect(
   state => ({
-    data: state.likedMovie
+    data: state.predictions
   }),
-  { removeMovieFromList }
-)(LikedMoviesScreen);
+  { removePrediction }
+)(MyPredictionsScreen);
 
 // TODO: Line 38: 
 // Parameter crashes the app

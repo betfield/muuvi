@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { View, TouchableOpacity, Text } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
-import styles from './styles/MovieMeta';
+import styles from './styles/FixtureDetails';
 import Panel from './Panel';
 import { getFixtureDetails } from '../actions';
 
-class MovieMeta extends Component {
+class FixtureDetails extends Component {
 
   componentDidMount() {
     this.props.getFixtureDetails(this.props.fixture, 2);
@@ -61,4 +61,4 @@ export default connect(
     data: state.infoModal
   }),
   { getFixtureDetails }
-)(MovieMeta);
+)(FixtureDetails);

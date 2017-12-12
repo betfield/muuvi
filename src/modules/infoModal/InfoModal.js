@@ -2,7 +2,7 @@ import React from 'react';
 import { Platform, Modal, View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo';
 import { FontAwesome } from '@expo/vector-icons';
-import MovieMeta from './components/MovieMeta';
+import FixtureDetails from './components/FixtureDetails';
 import styles from './styles/InfoModal';
 import { getHeaderDate, getReferee } from '../../../helpers';
 
@@ -47,7 +47,7 @@ const InfoModal = ({ fixture, close, closeModalInfo, visible }) => (
             </ScrollView>
           </LinearGradient>  
         </View>
-        <MovieMeta fixture={fixture} closeModalInfo={closeModalInfo} />
+        <FixtureDetails fixture={fixture} closeModalInfo={closeModalInfo} />
       </View>
     </View>
   </Modal>

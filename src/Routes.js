@@ -2,10 +2,10 @@ import React from 'react';
 import { Scene, Router, Actions } from 'react-native-router-flux';
 import { Platform, TouchableOpacity, View } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Foundation } from '@expo/vector-icons';
 import {
   HomeScreen,
-  LikedMoviesScreen,
+  MyPredictionsScreen,
 } from './modules';
 
 const Routes = () => (
@@ -16,7 +16,7 @@ const Routes = () => (
     navigationBarStyle={styles.navBar}
     renderRightButton={() => (
       <TouchableOpacity
-        onPress={() => Actions.likedMovies()}
+        onPress={() => Actions.predictions()}
       >
         <View
           style={{
@@ -25,7 +25,7 @@ const Routes = () => (
             alignItems: 'center'
           }}
         >
-          <MaterialIcons name="movie" size={30} color="#fff" />
+          <Foundation name="results" size={30} color="#fff" />
         </View>
       </TouchableOpacity>
     )}
@@ -37,9 +37,9 @@ const Routes = () => (
       component={HomeScreen}
     />
     <Scene
-      key="likedMovies"
+      key="predictions"
       title="Your predictions"
-      component={LikedMoviesScreen}
+      component={MyPredictionsScreen}
     />
   </Router>
 );

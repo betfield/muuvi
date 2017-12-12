@@ -3,12 +3,12 @@ import {
   HomeReducer,
   InfoReducer,
   UIReducer,
-  LikedMovieReducer,
+  PredictionsReducer,
 } from '../modules';
 
 export default combineReducers({
   home: HomeReducer,
   infoModal: InfoReducer,
-  likedMovie: LikedMovieReducer,
+  predictions: PredictionsReducer,
   ui: UIReducer
 });

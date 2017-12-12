@@ -5,7 +5,7 @@ const styles = EStyleSheet.create({
     flex: 1,
     backgroundColor: '$blackColor'
   },
-  movieContainer: {
+  fixtureContainer: {
     flex: 1,
   },
   container: {
@@ -13,7 +13,7 @@ const styles = EStyleSheet.create({
     alignItems: 'center',
     flex: 1
   },
-  movieImageContainer: {
+  fixtureImageContainer: {
     flex: 1,
     //height: 700, //was 35%
     width: 200, //was 45%
@@ -25,7 +25,7 @@ const styles = EStyleSheet.create({
     shadowColor: 'black',
     shadowOpacity: 0.8
   },
-  movieImage: {
+  fixtureImage: {
     flex: 1,
     width: null,
     height: null
@@ -48,12 +48,12 @@ const styles = EStyleSheet.create({
     color: '$redColor',
     fontSize: 16
   },
-  getMeMovieContainer: {
+  getFixtureContainer: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
   },
-  getMovieButton: {
+  getFixtureButton: {
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 2,
@@ -61,7 +61,7 @@ const styles = EStyleSheet.create({
     padding: 40,
     flexDirection: 'row'
   },
-  getMovieText: {
+  getFixtureText: {
     fontFamily: 'montserrat-regular',
     color: '$blueColor',
     fontSize: 16

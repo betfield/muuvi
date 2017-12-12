@@ -1,12 +1,12 @@
-export const ADD_MOVIE_TO_LIKED_LIST = 'ADD_MOVIE_TO_LIKED_LIST';
-export const REMOVE_MOVIE_FROM_LIST = 'REMOVE_MOVIE_FROM_LIST';
+export const ADD_PREDICTION = 'ADD_PREDICTION';
+export const REMOVE_PREDICTION = 'REMOVE_PREDICTION';
 
-export const addMovieToLikedList = fixture => ({
-  type: ADD_MOVIE_TO_LIKED_LIST,
+export const addPrediction = fixture => ({
+  type: ADD_PREDICTION,
   fixture
 });
 
-export const removeMovieFromList = id => ({
-  type: REMOVE_MOVIE_FROM_LIST,
+export const removePrediction = id => ({
+  type: REMOVE_PREDICTION,
   id
 });

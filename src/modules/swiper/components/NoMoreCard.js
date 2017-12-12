@@ -5,7 +5,7 @@ import { Actions } from 'react-native-router-flux';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { getCurrentMatchdayFixtures } from '../../home/actions';
 
-const NoMoreCard = ({ getMoviesPopular }) => (
+const NoMoreCard = ({ getCurrentMatchdayFixtures }) => (
   <View style={styles.root}>
     <Text style={styles.textStyle}>No more fixtures!!!</Text>
     <TouchableWithoutFeedback onPress={() => getCurrentMatchdayFixtures()}>

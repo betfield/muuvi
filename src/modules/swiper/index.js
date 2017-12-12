@@ -1,4 +1,4 @@
 import SwiperEL from './SwiperEL';
-import LikedMovieReducer from './reducer';
+import PredictionsReducer from './reducer';
 
-export { SwiperEL, LikedMovieReducer };
+export { SwiperEL, PredictionsReducer };

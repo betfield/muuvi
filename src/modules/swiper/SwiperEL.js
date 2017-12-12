@@ -5,7 +5,7 @@ import SwipeCards from './components/SwipeCards';
 import { ButtonsGroup, Card, NoMoreCard } from './components';
 import { InfoModal } from '../infoModal';
 import styles from './styles/SwiperEL';
-import { addMovieToLikedList } from './actions';
+import { addPrediction } from './actions';
 import { openModalInfo, closeModalInfo } from '../ui';
 import { getHeaderDate } from '../../../helpers';
 
@@ -14,7 +14,7 @@ class SwiperEL extends Component {
 
   _handleAwayWin = fixture => {
     this.setState({ cardIndex: this.state.cardIndex + 1 });
-    this.props.addMovieToLikedList({
+    this.props.addPrediction({
       id: fixture.id,
       name: fixture.awayTeam.name,
       image: fixture.awayTeam.logoUrl
@@ -23,7 +23,7 @@ class SwiperEL extends Component {
 
   _handleHomeWin = fixture => {
     this.setState({ cardIndex: this.state.cardIndex + 1 })
-    this.props.addMovieToLikedList({
+    this.props.addPrediction({
       id: fixture.id,
       name: fixture.homeTeam.name,
       image: fixture.homeTeam.logoUrl
@@ -34,7 +34,7 @@ class SwiperEL extends Component {
     this.setState({ cardIndex: this.state.cardIndex + 1 });
     this._swiper._goToNextCard();
     const fixture = this.props.fixtures[this.state.cardIndex];
-    this.props.addMovieToLikedList({
+    this.props.addPrediction({
       id: fixture.id,
       name: fixture.awayTeam.name,
       image: fixture.awayTeam.logoUrl
@@ -45,7 +45,7 @@ class SwiperEL extends Component {
     this.setState({ cardIndex: this.state.cardIndex + 1 });
     this._swiper._goToNextCard();
     const fixture = this.props.fixtures[this.state.cardIndex];
-    this.props.addMovieToLikedList({
+    this.props.addPrediction({
       id: fixture.id,
       name: fixture.homeTeam.name,
       image: fixture.homeTeam.logoUrl
@@ -106,5 +106,5 @@ export default connect(
     modalInfoShow: state.ui.modalInfoShow,
     modalInfoFixture: state.ui.modalInfoFixture
   }),
-  { openModalInfo, closeModalInfo, addMovieToLikedList }
+  { openModalInfo, closeModalInfo, addPrediction }
 )(SwiperEL);
