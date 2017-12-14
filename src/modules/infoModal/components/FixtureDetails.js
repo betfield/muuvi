@@ -5,6 +5,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { Actions } from 'react-native-router-flux';
 import styles from './styles/FixtureDetails';
 import Panel from './Panel';
+import Head2Head from './Head2Head';
 import { getFixtureDetails } from '../actions';
 
 class FixtureDetails extends Component {
@@ -30,9 +31,30 @@ class FixtureDetails extends Component {
       return (
         <View style={styles.bottomContainer}>
           <Panel title="Odds">
-            <Text style={styles.panelText}>
-              {data.odds[0].name}
-            </Text>
+            <View style={styles.oddsElement}>
+              <Text style={styles.panelText}>
+                {data.odds[0].bookmaker.data[0].odds.data[0].label}
+              </Text>
+              <Text style={styles.panelText}>
+                {data.odds[0].bookmaker.data[0].odds.data[0].value}
+              </Text>
+            </View>
+            <View style={styles.oddsElement}>
+              <Text style={styles.panelText}>
+                {data.odds[0].bookmaker.data[0].odds.data[1].label}
+              </Text>
+              <Text style={styles.panelText}>
+                {data.odds[0].bookmaker.data[0].odds.data[1].value}
+              </Text>
+            </View>
+            <View style={styles.oddsElement}>
+              <Text style={styles.panelText}>
+                {data.odds[0].bookmaker.data[0].odds.data[2].label}
+              </Text>
+              <Text style={styles.panelText}>
+                {data.odds[0].bookmaker.data[0].odds.data[2].value}
+              </Text>
+            </View>
           </Panel>
           <Panel title="Form">
             <Text style={styles.panelText}>
@@ -40,11 +62,7 @@ class FixtureDetails extends Component {
             {data.awayForm.name}
             </Text>
           </Panel>
-          <Panel title="Head To Head">
-            <Text style={styles.panelText}>
-              {data.head2head[0].localteam_id}
-            </Text>
-          </Panel>
+          <Head2Head data={data.head2head}/>
         </View>
       );
     }

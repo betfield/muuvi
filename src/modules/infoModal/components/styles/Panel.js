@@ -25,8 +25,8 @@ const styles = EStyleSheet.create({
   },
   panelBody: {
     paddingTop: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   }
 });
 

@@ -33,7 +33,6 @@ class Panel extends Component {
   }
 
   render() {
-    console.log(this.state);
     let icon = this._icons.down;
     if (this.state.expanded) {
       icon = this._icons.up;

@@ -22,7 +22,7 @@ export const fetchFixturesList = () => {
 export const fetchFixtureDetails = (fixture, bookieId) => {
   return Promise.all([fetchFixtureOdds(fixture.id, bookieId), fetchHead2Head(fixture.homeTeam.id, fixture.awayTeam.id), fetchTeamForm(fixture.homeTeam.id), fetchTeamForm(fixture.awayTeam.id)])
     .then(res => {
-      console.log("Promise all result: " + JSON.stringify(res[0], null, 4));
+      //console.log("Promise all result: " + JSON.stringify(res[0], null, 4));
       return [
         res[0], //Odds
         res[1], //Head2Head
@@ -55,12 +55,15 @@ const fetchFixtureOdds = (fixtureId, bookmakerId) => {
     });
 }
 
-//https://soccer.sportmonks.com/api/v2.0/head2head/85/2650?api_token=fVOC8UhcpFDSVFyNmAIjbbt2buc86l128ovGMVAJZwgHVtnwpa9XjZJ3GodE
+//https://soccer.sportmonks.com/api/v2.0/head2head/85/2650?api_token=fVOC8UhcpFDSVFyNmAIjbbt2buc86l128ovGMVAJZwgHVtnwpa9XjZJ3GodE&include=localTeam,visitorTeam,cards
 const fetchHead2Head = async (homeTeam, awayTeam) => {
   return Sportmonks.get(
     "v2.0/head2head/{homeTeam}/{awayTeam}", {
       "homeTeam": homeTeam, 
-      "awayTeam": awayTeam
+      "awayTeam": awayTeam,
+      "localTeam": true,
+      "visitorTeam": true,
+      "cards": true
   })
   .then(res => {
     return res.json();
