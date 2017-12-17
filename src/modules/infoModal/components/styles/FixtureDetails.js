@@ -9,11 +9,6 @@ const styles = EStyleSheet.create({
     zIndex: 1,
     backgroundColor: '$darkBlackColor'
   },
-  oddsElement: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
   panelText: {
     color: '$grayColor',
     fontFamily: 'montserrat-regular',

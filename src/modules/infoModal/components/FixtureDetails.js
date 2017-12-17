@@ -6,6 +6,8 @@ import { Actions } from 'react-native-router-flux';
 import styles from './styles/FixtureDetails';
 import Panel from './Panel';
 import Head2Head from './Head2Head';
+import TeamForm from './TeamForm';
+import Odds from './Odds';
 import { getFixtureDetails } from '../actions';
 
 class FixtureDetails extends Component {
@@ -30,38 +32,8 @@ class FixtureDetails extends Component {
     } else if (!data.error) {
       return (
         <View style={styles.bottomContainer}>
-          <Panel title="Odds">
-            <View style={styles.oddsElement}>
-              <Text style={styles.panelText}>
-                {data.odds[0].bookmaker.data[0].odds.data[0].label}
-              </Text>
-              <Text style={styles.panelText}>
-                {data.odds[0].bookmaker.data[0].odds.data[0].value}
-              </Text>
-            </View>
-            <View style={styles.oddsElement}>
-              <Text style={styles.panelText}>
-                {data.odds[0].bookmaker.data[0].odds.data[1].label}
-              </Text>
-              <Text style={styles.panelText}>
-                {data.odds[0].bookmaker.data[0].odds.data[1].value}
-              </Text>
-            </View>
-            <View style={styles.oddsElement}>
-              <Text style={styles.panelText}>
-                {data.odds[0].bookmaker.data[0].odds.data[2].label}
-              </Text>
-              <Text style={styles.panelText}>
-                {data.odds[0].bookmaker.data[0].odds.data[2].value}
-              </Text>
-            </View>
-          </Panel>
-          <Panel title="Form">
-            <Text style={styles.panelText}>
-            {data.homeForm.name}
-            {data.awayForm.name}
-            </Text>
-          </Panel>
+          <Odds odds={data.odds}/>
+          <TeamForm homeForm={data.homeForm} awayForm={data.awayForm}/>
           <Head2Head data={data.head2head}/>
         </View>
       );
