@@ -1,16 +1,46 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import Panel from './Panel';
 import styles from './styles/Head2Head';
 import { getH2HDate } from '../../../../helpers';
 
+function renderRedCard(isRedCard){
+  if (isRedCard) {
+    return (
+      <Image style={styles.card} source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/440px-Red_card.svg.png' }} />
+    );
+  }
+}
+
 function H2HItem(props) {
-  console.log("Head2Head: " + JSON.stringify(props.data, null, 4));
+  const { data } = props;
+
   return (
     <View style={styles.h2hElement}>
-      <Text style={styles.panelText}>
-        {props.data.date} {props.data.homeTeam.name} vs {props.data.awayTeam.name} {props.data.score.home}:{props.data.score.away}
-      </Text>
+      <View style={styles.h2hDate}>
+        <Text style={styles.panelText}>{data.date}</Text>
+      </View>
+      <View style={styles.h2hTeams}>
+        <View style={styles.h2hLogoLeft}>  
+          <Image style={styles.logo} source={{ uri: data.homeTeam.logoUrl }} />
+        </View>
+        <View style={styles.h2hScore}>
+          <View style={styles.h2hCard}>
+            {renderRedCard(data.homeTeam.redCard)}
+          </View>
+          <View style={styles.score}>
+            <Text style={styles.panelText}>
+              {data.score.home}:{data.score.away}
+            </Text>
+          </View>
+          <View style={styles.h2hCard}>
+            {renderRedCard(data.homeTeam.redCard)}
+          </View>
+        </View>
+        <View style={styles.h2hLogoRight}>
+          <Image style={styles.logo} source={{ uri: data.awayTeam.logoUrl }} />
+        </View>
+      </View>
     </View>
   );
 }
@@ -72,8 +102,9 @@ class Head2Head extends Component {
       <Panel title="Head To Head">
         <View style={styles.h2hContainer}>
           {this._getHead2HeadData(data).map((h2h, index) => {
-            if (index < 5)
-              return <H2HItem key={index} data={h2h}/>
+            if (index < 4) {
+              return <H2HItem key={index} data={h2h} />
+            }
           })}
         </View>
       </Panel>
