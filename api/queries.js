@@ -2,7 +2,7 @@ import gql from 'graphql-tag';
 
 export const fixturesListQuery = gql`
 {
-  currentMatchdayfixtures(season: 6361) {
+  currentMatchdayfixtures(season: 7953) {
     id
     league_id
     season_id

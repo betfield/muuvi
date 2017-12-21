@@ -20,14 +20,19 @@ export const fetchFixturesList = () => {
 }
 
 export const fetchFixtureDetails = (fixture, bookieId) => {
-  return Promise.all([fetchFixtureOdds(fixture.id, bookieId), fetchHead2Head(fixture.homeTeam.id, fixture.awayTeam.id), fetchTeamForm(fixture.homeTeam.id), fetchTeamForm(fixture.awayTeam.id)])
+  return Promise.all([fetchFixtureOdds(fixture.id, bookieId), 
+                      fetchHead2Head(fixture.homeTeam.id, fixture.awayTeam.id), 
+                      //fetchTeamForm(fixture.homeTeam.id), 
+                      //fetchTeamForm(fixture.awayTeam.id),
+                      fetchSeasonStandings(fixture.season_id)])
     .then(res => {
       //console.log("Promise all result: " + JSON.stringify(res[0], null, 4));
       return [
         res[0], //Odds
         res[1], //Head2Head
-        res[2], //Home Form
-        res[3] //Away Form
+        //res[2], //Home Form
+        //res[3], //Away Form
+        res[2]  //Standings
       ];
     })
     .catch((error)=> {
@@ -84,6 +89,24 @@ const fetchTeamForm = async (id) => {
       "id": id, 
       "latest": true
       //TODO: How to include limit?
+    })
+    .then(res => {
+      return res.json();
+    })
+    .then(res => {
+      //console.log("fetchTeamForm: " + JSON.stringify(res.data, null, 4));
+      return res.data;
+    })
+    .catch( err => {
+      console.log("Failed to load form data for team: " + id, err);
+    });
+}
+
+//https://soccer.sportmonks.com/api/v2.0/standings/season/6361?api_token=fVOC8UhcpFDSVFyNmAIjbbt2buc86l128ovGMVAJZwgHVtnwpa9XjZJ3GodE
+const fetchSeasonStandings = async (season) => {
+  return Sportmonks.get(
+    "v2.0/standings/season/{id}", {
+      "id": season
     })
     .then(res => {
       return res.json();

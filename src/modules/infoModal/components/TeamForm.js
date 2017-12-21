@@ -17,8 +17,8 @@ class TeamForm extends Component {
     return (
       <Panel title="Form">
         <Text style={styles.panelText}>
-          {homeForm.name}
-          {awayForm.name}
+          {homeForm.team_name}
+          {awayForm.team_name}
         </Text>
       </Panel>
     );

@@ -5,8 +5,7 @@ const INITIAL_STATE = {
   error: null,
   odds: null,
   head2head: null,
-  homeForm: null,
-  awayForm: null
+  standings: null
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -18,8 +17,7 @@ export default (state = INITIAL_STATE, action) => {
         isFetched: true,
         odds: action.payload[0],
         head2head: action.payload[1],
-        homeForm: action.payload[2],
-        awayForm: action.payload[3]
+        standings: action.payload[2]
       };
     case `${GET_FIXTURE_DETAILS}_REJECTED`:
       return { ...state,

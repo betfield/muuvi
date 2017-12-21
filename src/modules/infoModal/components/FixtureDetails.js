@@ -16,6 +16,20 @@ class FixtureDetails extends Component {
     this.props.getFixtureDetails(this.props.fixture, 2);
   }
 
+  _getTeamStandings(standings, teamId) {
+    const teamStandings = standings.data;
+    let result = null;
+
+    teamStandings.forEach(e => {
+      if (e.team_id === teamId)  {
+        result = e;
+      }
+    });
+
+    return result;
+
+  }
+
   render() {
     const { data, fixture } = this.props;
 
@@ -33,7 +47,10 @@ class FixtureDetails extends Component {
       return (
         <View style={styles.bottomContainer}>
           <Odds odds={data.odds}/>
-          <TeamForm homeForm={data.homeForm} awayForm={data.awayForm}/>
+          <TeamForm 
+            homeForm={this._getTeamStandings(data.standings[0].standings, fixture.homeTeam.id)} 
+            awayForm={this._getTeamStandings(data.standings[0].standings, fixture.awayTeam.id)}
+          />
           <Head2Head data={data.head2head}/>
         </View>
       );
