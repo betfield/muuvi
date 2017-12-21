@@ -50,6 +50,7 @@ class FixtureDetails extends Component {
           <TeamForm 
             homeForm={this._getTeamStandings(data.standings[0].standings, fixture.homeTeam.id)} 
             awayForm={this._getTeamStandings(data.standings[0].standings, fixture.awayTeam.id)}
+            fixture={fixture}
           />
           <Head2Head data={data.head2head}/>
         </View>
