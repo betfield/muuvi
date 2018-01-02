@@ -8,6 +8,7 @@ import Panel from './Panel';
 import Head2Head from './Head2Head';
 import TeamForm from './TeamForm';
 import Odds from './Odds';
+import PanelText from '../../../commons/components/PanelText';
 import { getFixtureDetails } from '../actions';
 
 class FixtureDetails extends Component {
@@ -37,9 +38,7 @@ class FixtureDetails extends Component {
       return (
         <View style={styles.bottomContainer}>
           <Panel title="Loading...">
-            <Text style={styles.panelText}>
-              Loading...
-            </Text>
+            <PanelText text="Loading..."/>
           </Panel>
         </View>
       );

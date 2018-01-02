@@ -9,11 +9,6 @@ const styles = EStyleSheet.create({
     zIndex: 1,
     backgroundColor: '$darkBlackColor'
   },
-  panelText: {
-    color: '$grayColor',
-    fontFamily: 'montserrat-regular',
-    fontSize: 16
-  },
   buttonText: {
     color: '$blueColor',
     padding: 5,

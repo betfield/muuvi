@@ -59,11 +59,6 @@ const styles = EStyleSheet.create({
   card: {
     width: 10,
     height: 15,
-  },
-  panelText: {
-    color: '$grayColor',
-    fontFamily: 'montserrat-regular',
-    fontSize: 16
   }
 });
 

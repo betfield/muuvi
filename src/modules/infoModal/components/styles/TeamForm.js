@@ -53,11 +53,6 @@ const styles = EStyleSheet.create({
     width: 20,
     height: 20,
     borderRadius: 10
-  },
-  panelText: {
-    color: '$grayColor',
-    fontFamily: 'montserrat-regular',
-    fontSize: 16
   }
 });
 

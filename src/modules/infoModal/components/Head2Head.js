@@ -3,8 +3,9 @@ import { View, Text, Image } from 'react-native';
 import Panel from './Panel';
 import styles from './styles/Head2Head';
 import { getH2HDate } from '../../../../helpers';
+import PanelText from '../../../commons/components/PanelText';
 
-function renderRedCard(isRedCard){
+function _renderRedCard(isRedCard){
   if (isRedCard) {
     return (
       <Image style={styles.card} source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Red_card.svg/440px-Red_card.svg.png' }} />
@@ -18,7 +19,7 @@ function H2HItem(props) {
   return (
     <View style={styles.h2hElement}>
       <View style={styles.h2hDate}>
-        <Text style={styles.panelText}>{data.date}</Text>
+        <PanelText text={data.date}/>
       </View>
       <View style={styles.h2hTeams}>
         <View style={styles.h2hLogoLeft}>  
@@ -26,15 +27,13 @@ function H2HItem(props) {
         </View>
         <View style={styles.h2hScore}>
           <View style={styles.h2hCard}>
-            {renderRedCard(data.homeTeam.redCard)}
+            {_renderRedCard(data.homeTeam.redCard)}
           </View>
           <View style={styles.score}>
-            <Text style={styles.panelText}>
-              {data.score.home}:{data.score.away}
-            </Text>
+            <PanelText text={data.score.home + ":" + data.score.away}/>  
           </View>
           <View style={styles.h2hCard}>
-            {renderRedCard(data.homeTeam.redCard)}
+            {_renderRedCard(data.homeTeam.redCard)}
           </View>
         </View>
         <View style={styles.h2hLogoRight}>
