@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
-import { View, Text, Image, ScrollView, TouchableWithoutFeedback } from 'react-native';
-import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
+import { View, Text } from 'react-native';
 import styles from './styles/MyPredictionsScreen';
 import { removePrediction } from '../swiper/actions';
-import Colors from '../../../constants/Colors';
+import PredictionsHeader from './components/PredictionsHeader';
+import PredictionsList from './components/PredictionsList';
 
 class MyPredictionsScreen extends Component {
   render() {
-    if (this.props.data.length < 1) {
+
+    const { data } = this.props;
+
+    if (data.length < 1) {
       return (
         <View style={styles.root}>
           <View style={styles.container}>
@@ -22,27 +24,12 @@ class MyPredictionsScreen extends Component {
     }
     return (
       <View style={styles.root}>
-        <ScrollView horizontal style={{ flex: 0.5 }}>
-          {this.props.data.map((fixture, i) => (
-            <View style={styles.fixtureContainer} key={i}>
-              <View style={styles.fixtureImageContainer}>
-                <Image
-                  style={styles.fixtureImage}
-                  source={{ uri: fixture.image }}
-                />
-                <Text>{fixture.name}</Text>
-              </View>
-              <TouchableWithoutFeedback
-                onPress={() => this.props.removePrediction(fixture.id)}
-              >
-                <View style={styles.deleteButton}>
-                  <Text style={styles.deleteText}>Remove</Text>
-                  <FontAwesome name="trash" color={Colors.redColor} size={25} />
-                </View>
-              </TouchableWithoutFeedback>
-            </View>
-          ))}
-        </ScrollView>
+        <View style={styles.headerContainer}>
+          <PredictionsHeader data={data}/>
+        </View>
+        <View style={styles.listContainer}>
+          <PredictionsList data={data}/>
+        </View>
       </View>
     );
   }
