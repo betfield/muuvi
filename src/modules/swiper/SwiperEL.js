@@ -12,21 +12,26 @@ import { getHeaderDate } from '../../../helpers';
 class SwiperEL extends Component {
   state = { cardIndex: 0 }
 
+  _getPredictionData = (fixture, selection) => {
+    let prediction = {
+      fixture: fixture
+    }
+    prediction.userPrediction = selection;
+
+    return prediction; 
+  }
+
   _handleAwayWin = fixture => {
     this.setState({ cardIndex: this.state.cardIndex + 1 });
     this.props.addPrediction({
-      id: fixture.id,
-      name: fixture.awayTeam.name,
-      image: fixture.awayTeam.logoUrl
+      prediction: this._getPredictionData(fixture, "AWAY_WIN") 
     });
   }
 
   _handleHomeWin = fixture => {
     this.setState({ cardIndex: this.state.cardIndex + 1 })
     this.props.addPrediction({
-      id: fixture.id,
-      name: fixture.homeTeam.name,
-      image: fixture.homeTeam.logoUrl
+      prediction: this._getPredictionData(fixture, "HOME_WIN") 
     });
   }
 
@@ -35,9 +40,7 @@ class SwiperEL extends Component {
     this._swiper._goToNextCard();
     const fixture = this.props.fixtures[this.state.cardIndex];
     this.props.addPrediction({
-      id: fixture.id,
-      name: fixture.awayTeam.name,
-      image: fixture.awayTeam.logoUrl
+      prediction: this._getPredictionData(fixture, "AWAY_WIN") 
     });
   }
 
@@ -46,9 +49,7 @@ class SwiperEL extends Component {
     this._swiper._goToNextCard();
     const fixture = this.props.fixtures[this.state.cardIndex];
     this.props.addPrediction({
-      id: fixture.id,
-      name: fixture.homeTeam.name,
-      image: fixture.homeTeam.logoUrl
+      prediction: this._getPredictionData(fixture, "HOME_WIN") 
     });
   }
 

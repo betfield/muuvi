@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
 import styles from './styles/MyPredictionsScreen';
-import { removePrediction } from '../swiper/actions';
 import PredictionsHeader from './components/PredictionsHeader';
 import PredictionsList from './components/PredictionsList';
 
@@ -38,8 +37,7 @@ class MyPredictionsScreen extends Component {
 export default connect(
   state => ({
     data: state.predictions
-  }),
-  { removePrediction }
+  })
 )(MyPredictionsScreen);
 
 // TODO: Line 38: 

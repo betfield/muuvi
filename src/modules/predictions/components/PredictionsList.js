@@ -12,7 +12,7 @@ class PredictionsList extends Component {
 
   _renderFunction = (item) => {
     return (
-      <PredictionsItem fixture={item}/>
+      <PredictionsItem prediction={item}/>
     )
   }
 
@@ -25,7 +25,7 @@ class PredictionsList extends Component {
         <FlatList 
           data={data}
           renderItem={this._renderFunction}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.prediction.fixture.id}
         />
       </View>
     );
