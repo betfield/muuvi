@@ -16,7 +16,7 @@ class PredictionsItem extends Component {
   render() {
     
     const prediction = this.props.prediction.item.prediction;
-    console.log("fixtuuur: " + JSON.stringify(prediction, null, 4));
+    //console.log("fixtuuur: " + JSON.stringify(prediction, null, 4));
 
     return (
       <View style={styles.fixtureContainer}>

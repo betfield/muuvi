@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FlatList, View } from 'react-native';
+import { connect } from 'react-redux';
 import styles from './styles/PredictionsList';
 import PredictionsItem from './PredictionsItem';
 import PanelText from '../../../commons/components/PanelText';
@@ -19,7 +20,7 @@ class PredictionsList extends Component {
   render() {
     
     const { data } = this.props;
-
+    
     return (
       <View style={styles.predictionsListContainer}>
         <FlatList 

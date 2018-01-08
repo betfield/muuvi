@@ -65,3 +65,9 @@ export const fixturesListQuery = gql`
   }
 }
 `;
+
+export const seasonMatchdaysQuery = gql`
+{
+  seasonMatchdays(season: 7953)
+}
+`;

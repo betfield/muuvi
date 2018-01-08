@@ -11,11 +11,11 @@ class PredictionsHeader extends Component {
 
   render() {
     
-    const { data } = this.props;
+    const { matchdays } = this.props;
 
     return (
       <ScrollView horizontal style={styles.predictionsHeaderContainer}>
-      <Text>tere</Text>
+      <Text>{matchdays.matchdays.length}</Text>
       </ScrollView>
     );
   }
